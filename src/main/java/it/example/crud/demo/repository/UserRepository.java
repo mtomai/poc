@@ -12,9 +12,6 @@ import java.util.concurrent.CompletableFuture;
 @Repository
 public interface UserRepository extends JpaRepository<UserTable, Long> {
 
-	@Async
-	CompletableFuture<UserTable> findOneByName(String name);
-
-	@Query("SELECT u FROM users u WHERE u.age = 43")
-	Collection<UserTable> findAllActiveUsers();
+//	@Query("SELECT u FROM users u WHERE u.age = 43")
+//	Collection<UserTable> findAllActiveUsers();
 }

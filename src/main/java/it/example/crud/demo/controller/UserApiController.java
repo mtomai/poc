@@ -33,7 +33,7 @@ public class UserApiController {
 									@ApiResponse(code = 500, message = "Something went wrong", response = ErrorResponse.class)
 	})
 	@GetMapping(value = "/user-service/users")
-	public List<User> getContracts(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true)
+	public List<User> getUsers (@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true)
 																																@RequestHeader(value = "Authorization") String authorization) {
 
 		log.debug("Try to get users");

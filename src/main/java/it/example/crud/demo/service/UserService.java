@@ -25,7 +25,8 @@ public class UserService {
 	public List<User> getUsers() {
 
 		log.debug("Getting users from DB");
-		return userRepository.findAll().stream().map(UserService::mapTable).collect(Collectors.toList());
+		return userRepository.findAll().stream()
+										.map(UserService::mapTable).collect(Collectors.toList());
 
 	}
 
