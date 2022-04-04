@@ -25,6 +25,6 @@ public class User {
 	private Gender gender;
 
 	@ApiModelProperty(value = "date of birth of the user", name = "dateOfBirth", example = "20-11-1979")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Europe/Berlin")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-YYYY", timezone = "Europe/Berlin")
 	private Date dateOfBirth;
 }
