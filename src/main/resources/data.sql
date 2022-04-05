@@ -8,3 +8,7 @@ insert into USERS values (7,'Marco', 'Grigi', 64, 'M', '20-11-1958');
 insert into USERS values (8,'Cristiana', 'Azzurri', 15, 'F', '20-11-2007');
 insert into USERS values (9,'Giorgio', 'Neri', 13, 'M', '20-11-2009');
 insert into USERS values (10, 'Isabella', 'Bianchi', 18, 'F', '20-11-2004');
+insert into PERMISSION values (1, 'utente1', 'pw1', 'admin');
+insert into PERMISSION values (2, 'utente2', 'pw2', 'other');
+insert into PERMISSION values (3, 'utente3', 'pw3', 'other');
+insert into PERMISSION values (4, 'utente4', 'pw4', 'other');

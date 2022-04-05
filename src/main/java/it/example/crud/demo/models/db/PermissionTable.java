@@ -14,20 +14,13 @@ import javax.persistence.Id;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "users")
-public class UserTable {
+@Entity(name = "permission")
+public class PermissionTable {
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Long id;
-
-	private String name;
-
-	private String lastName;
-
-	private int age;
-
-	private String gender;
-
-	private String dateOfBirth;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
+    private String username;
+    private String password;
+    private String role;
 }
