@@ -44,7 +44,7 @@ public class UserApiController {
 
 	}
 
-	@GetMapping(value = "user-service/userById/{id}")
+	@GetMapping(value = "/user-service/userById/{id}")
 	public ResponseEntity<User> getUserById(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true) @RequestHeader(value = "Authorization") String authorization, @PathVariable Long id) {
 		log.debug("Try to get user");
 		User risultato = userService.getUserById(id);
@@ -56,19 +56,19 @@ public class UserApiController {
 	}
 
 	@Permission(role="admin")
-	@DeleteMapping(value = "user-service/deleteUser/{id}")
+	@DeleteMapping(value = "/user-service/deleteUser/{id}")
 	public void deleteUserById(@ApiParam(name = "username", required = true) @RequestHeader(value = "username") String username, @ApiParam(name = "password", required = true) @RequestHeader(value = "password") String password, @PathVariable Long id) {
 		log.debug("Try to delete user");
 		userService.deleteById(id);
 	}
 
-	@PostMapping(value = "user-service/newUser")
+	@PostMapping(value = "/user-service/newUser")
 	public void newUser(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true) @RequestHeader(value = "Authorization") String authorization, @RequestBody UserPostRequest user) {
 		log.debug("Try to add user");
 		userService.newUser(user);
 	}
 
-	@PutMapping(value="user-service/updateEta/{id}/{eta}")
+	@PutMapping(value="/user-service/updateEta/{id}/{eta}")
 	public void updateEta(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true) @RequestHeader(value = "Authorization") String authorization, @PathVariable Long id, @PathVariable int eta) {
 		log.debug("Try to update");
 		userService.updateEta(id,eta);

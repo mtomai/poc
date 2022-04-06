@@ -55,7 +55,7 @@ public class UserService {
 		userRepository.save(mapUser(user));
 	}
 
-	//update user
+	//update user ->@Transactional è una annotation che serve per gli update
 	@Transactional
 	public void updateEta(Long id, int eta){
 		log.debug("Update age");
