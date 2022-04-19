@@ -4,6 +4,7 @@ import it.example.crud.demo.models.Gender;
 import it.example.crud.demo.models.User;
 import it.example.crud.demo.models.UserPostRequest;
 import it.example.crud.demo.models.db.UserTable;
+import it.example.crud.demo.permission.Logging;
 import it.example.crud.demo.repository.UserRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	//lista users
+	@Logging
 	public List<User> getUsers() {
 
 		log.debug("Getting users from DB");
@@ -63,8 +66,14 @@ public class UserService {
 		Optional<UserTable> byId = userRepository.findById(id);
 		if(byId.isPresent()){
 			//BeanUtils.copyProperties(byId, u);
+			u.setId(id);
+			u.setName(byId.get().getName());
+			u.setLastName(byId.get().getLastName());
+			u.setGender(byId.get().getGender());
+			u.setDateOfBirth(byId.get().getDateOfBirth());
 			u.setAge(eta);
-			userRepository.save(u);
+			UserTable save = userRepository.save(u);
+			//userRepository.save(u);
 		}
 	}
 

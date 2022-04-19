@@ -7,8 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Permission {
-
-    String role() default "";
+public @interface Logging {
 
 }

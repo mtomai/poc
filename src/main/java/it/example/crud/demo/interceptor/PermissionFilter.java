@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Component
-@Order(2)
+/*@Component
+@Order(2)*/
 public class PermissionFilter implements Filter {
 
     @Autowired

@@ -10,6 +10,7 @@ import it.example.crud.demo.models.ErrorResponse;
 import it.example.crud.demo.models.User;
 import it.example.crud.demo.models.UserPostRequest;
 import it.example.crud.demo.permission.Permission;
+import it.example.crud.demo.permission.PermissionPlus;
 import it.example.crud.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class UserApiController {
 									@ApiResponse(code = 500, message = "Something went wrong", response = ErrorResponse.class)
 	})
 
+	@PermissionPlus(operationType = "getUsers")
 	@GetMapping(value = "/user-service/users")
 	public List<User> getContracts(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true)
 																																@RequestHeader(value = "Authorization") String authorization) {
@@ -44,6 +46,7 @@ public class UserApiController {
 
 	}
 
+	@PermissionPlus(operationType = "getUserById")
 	@GetMapping(value = "/user-service/userById/{id}")
 	public ResponseEntity<User> getUserById(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true) @RequestHeader(value = "Authorization") String authorization, @PathVariable Long id) {
 		log.debug("Try to get user");
@@ -56,18 +59,21 @@ public class UserApiController {
 	}
 
 	@Permission(role="admin")
+	@PermissionPlus(operationType = "deleteUser")
 	@DeleteMapping(value = "/user-service/deleteUser/{id}")
 	public void deleteUserById(@ApiParam(name = "username", required = true) @RequestHeader(value = "username") String username, @ApiParam(name = "password", required = true) @RequestHeader(value = "password") String password, @PathVariable Long id) {
 		log.debug("Try to delete user");
 		userService.deleteById(id);
 	}
 
+	@PermissionPlus(operationType = "newUser")
 	@PostMapping(value = "/user-service/newUser")
 	public void newUser(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true) @RequestHeader(value = "Authorization") String authorization, @RequestBody UserPostRequest user) {
 		log.debug("Try to add user");
 		userService.newUser(user);
 	}
 
+	@PermissionPlus(operationType = "updateEta")
 	@PutMapping(value="/user-service/updateEta/{id}/{eta}")
 	public void updateEta(@ApiParam(name = "Authorization", type = "String", value = "authorization phrase", example = "Password1234", required = true) @RequestHeader(value = "Authorization") String authorization, @PathVariable Long id, @PathVariable int eta) {
 		log.debug("Try to update");
