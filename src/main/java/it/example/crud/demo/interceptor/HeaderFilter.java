@@ -20,8 +20,8 @@ import java.util.Collections;
 import java.util.Optional;
 
 
-@Component
-@Order(1)
+/*@Component
+@Order(3)*/
 public class HeaderFilter implements Filter {
 
 	@Value("${it.example.phrase}")
