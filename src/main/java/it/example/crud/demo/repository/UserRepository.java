@@ -12,6 +12,4 @@ import java.util.concurrent.CompletableFuture;
 @Repository
 public interface UserRepository extends JpaRepository<UserTable, Long> {
 
-//	@Query("SELECT u FROM users u WHERE u.age = 43")
-//	Collection<UserTable> findAllActiveUsers();
 }
